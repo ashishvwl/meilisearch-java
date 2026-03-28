@@ -300,6 +300,19 @@ public class Client {
     }
 
     /**
+     * Retrieves the documents of a task with the specified uid
+     *
+     * @param uid Identifier of the requested Task
+     * @return Meilisearch API response as NDJSON String
+     * @throws MeilisearchException if an error occurs
+     * @see <a href="https://www.meilisearch.com/docs/reference/api/tasks#get-task-documents">API
+     *     specification</a>
+     */
+    public String getTaskDocuments(int uid) throws MeilisearchException {
+        return this.tasksHandler.getTaskDocuments(uid);
+    }
+
+    /**
      * Retrieves list of tasks
      *
      * @return TasksResults containing a list of tasks from the Meilisearch API
