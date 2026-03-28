@@ -512,7 +512,8 @@ public class TasksTest extends AbstractIT {
     @Test
     public void testGetTaskDocumentsInvalidTaskUid() throws Exception {
         // Try to get documents for a non-existent task uid
-        assertThrows(MeilisearchException.class, () -> client.getTaskDocuments(999999));
+        int invalidTaskUid = Integer.MAX_VALUE;
+        assertThrows(MeilisearchException.class, () -> client.getTaskDocuments(invalidTaskUid));
     }
 
     /** Test Get Task Documents - With bulk document addition */
