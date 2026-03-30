@@ -384,11 +384,7 @@ public class ClientTest extends AbstractIT {
         Index index = createEmptyIndex(indexUid, this.primaryKey);
 
         TaskInfo addTask =
-            index.addDocuments(
-                "[{"
-                    + "\"id\": 1,"
-                    + "\"title\": \"Document1\""
-                    + "}]");
+                index.addDocuments("[{" + "\"id\": 1," + "\"title\": \"Document1\"" + "}]");
         index.waitForTask(addTask.getTaskUid());
         String taskDocuments = client.getTaskDocuments(addTask.getTaskUid());
 
@@ -400,7 +396,5 @@ public class ClientTest extends AbstractIT {
         assertThat(firstDocument.has("title"), is(true));
         assertThat(firstDocument.get("id").getAsInt(), is(equalTo(1)));
         assertThat(firstDocument.get("title").getAsString(), is(equalTo("Document1")));
-
     }
-
 }

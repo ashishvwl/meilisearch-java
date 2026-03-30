@@ -29,7 +29,9 @@ public class JacksonJsonHandler implements JsonHandler {
         registerFilterableAttributesModule(this.mapper);
     }
 
-    /** @param mapper ObjectMapper */
+    /**
+     * @param mapper ObjectMapper
+     */
     public JacksonJsonHandler(ObjectMapper mapper) {
         this.mapper = mapper;
         registerFilterableAttributesModule(this.mapper);

@@ -52,6 +52,7 @@ public class TasksHandler {
         String urlPath = urlb.getURL();
         return httpClient.get(urlPath, String.class);
     }
+
     /**
      * Retrieves all tasks from the client
      *
@@ -173,6 +174,7 @@ public class TasksHandler {
             elapsedTime = new Date().getTime() - startTime;
         }
     }
+
     /**
      * Retrieves a batch by uid.
      *

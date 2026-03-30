@@ -423,6 +423,7 @@ public class SettingsHandler {
                         : sortableAttributes,
                 TaskInfo.class);
     }
+
     /**
      * Resets the sortable attributes of the index
      *

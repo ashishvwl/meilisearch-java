@@ -46,6 +46,7 @@ public class SearchRequest {
     protected Hybrid hybrid;
     protected Double[] vector;
     protected Boolean retrieveVectors;
+
     /**
      * Constructor for SearchRequest for building search queries with the default values: offset: 0,
      * limit: 20, attributesToRetrieve: ["*"], attributesToCrop: null, cropLength: 200,
