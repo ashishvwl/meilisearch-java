@@ -390,11 +390,17 @@ public class ClientTest extends AbstractIT {
                     + "\"title\": \"Document1\""
                     + "}]");
         index.waitForTask(addTask.getTaskUid());
-
         String taskDocuments = client.getTaskDocuments(addTask.getTaskUid());
 
         assertThat(taskDocuments, is(notNullValue()));
-        assertThat(taskDocuments, containsString("\"id\""));
+        String[] lines = taskDocuments.split("\n");
+        assertThat(lines.length, is(greaterThan(0)));
+        JsonObject firstDocument = JsonParser.parseString(lines[0]).getAsJsonObject();
+        assertThat(firstDocument.has("id"), is(true));
+        assertThat(firstDocument.has("title"), is(true));
+        assertThat(firstDocument.get("id").getAsInt(), is(equalTo(1)));
+        assertThat(firstDocument.get("title").getAsString(), is(equalTo("Document1")));
+
     }
 
 }
