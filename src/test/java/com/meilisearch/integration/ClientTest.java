@@ -376,4 +376,25 @@ public class ClientTest extends AbstractIT {
         assertThat(index.getDocument("1", Movie.class).getTitle(), is(equalTo("Document1")));
         assertThat(index.getDocument("2", Movie.class).getTitle(), is(equalTo("Document2")));
     }
+
+    /** Test getTaskDocuments */
+    @Test
+    public void testGetTaskDocuments() throws Exception {
+        String indexUid = "GetTaskDocuments";
+        Index index = createEmptyIndex(indexUid, this.primaryKey);
+
+        TaskInfo addTask =
+            index.addDocuments(
+                "[{"
+                    + "\"id\": 1,"
+                    + "\"title\": \"Document1\""
+                    + "}]");
+        index.waitForTask(addTask.getTaskUid());
+
+        String taskDocuments = client.getTaskDocuments(addTask.getTaskUid());
+
+        assertThat(taskDocuments, is(notNullValue()));
+        assertThat(taskDocuments, containsString("\"id\""));
+    }
+
 }
